@@ -5,7 +5,11 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,9 +25,12 @@ public class MainActivity extends AppCompatActivity {
        // tab1.setHint("customername");
 
        // TextInputLayout tname=(TextInputLayout)findViewById(R.id.textlayout_name);
-
+final Spinner sp1,sp2;
         final EditText editname,editphone,editadresscount,editValuPay ,editValuRecive,editValuRemind,addressLenght
        , shoulderLenght,armLenght;
+ArrayList<String>nicklist=new ArrayList<>();
+        ArrayList<String>cabacklist=new ArrayList<>();
+
 
         //name of customer
         editname=(EditText)findViewById(R.id.edittext_name);
@@ -38,12 +45,27 @@ public class MainActivity extends AppCompatActivity {
         //the value wich remind
         editValuRemind=(EditText)findViewById(R.id.editext_remained_value);
 
+        sp1=(Spinner)findViewById(R.id.spinner_nick) ;
 
+        sp2=(Spinner)findViewById(R.id.spinner_cabk) ;
+nicklist.add("سادة");
+        nicklist.add("قلاب صيني");
+        nicklist.add("صيني قلاب درجتين");
+        nicklist.add("صيني ثلاث");
+        nicklist.add("صيني درجتين");
+        nicklist.add("سادة قلاب");
+        nicklist.add("قلاب مفتوح");
+        nicklist.add("قلاب ملكي");
 
+        cabacklist.add("حشوه");
 
+        cabacklist.add("دبل");
 
+        ArrayAdapter<String>adapter1=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,nicklist);
+        sp1.setAdapter(adapter1);
 
-
+        ArrayAdapter<String>adapter2=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,cabacklist);
+        sp2.setAdapter(adapter2);
 
 
 
