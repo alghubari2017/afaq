@@ -213,13 +213,15 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:hint="الكم"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
-
-        <android.support.design.widget.TextInputEditText
+        <EditText
+            android:id="@+id/ed_text_alkm"
             android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:hint="الكم" />
+            android:layout_height="40dp" />
+
+
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -229,13 +231,15 @@
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
+        android:hint="الصدر"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout9"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout4">
 
-        <android.support.design.widget.TextInputEditText
+
+        <EditText
+            android:id="@+id/ed_text_chest"
             android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:hint="الصدر" />
+            android:layout_height="wrap_content" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -246,13 +250,16 @@
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
+        android:hint="الرقبه"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout11"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout10">
 
-        <android.support.design.widget.TextInputEditText
+
+
+        <EditText
+            android:id="@+id/ed_text_nick"
             android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:hint="الرقبه" />
+            android:layout_height="wrap_content" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -265,15 +272,18 @@
         android:layout_marginRight="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
+        android:hint="وسع اليد"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout12"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
 
-        <android.support.design.widget.TextInputEditText
+
+        <EditText
+            android:id="@+id/ed_text_hand"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="وسع اليد" />
+            android:layout_height="wrap_content" />
+
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -283,13 +293,15 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:hint="من تحت"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout9">
 
-        <android.support.design.widget.TextInputEditText
+
+        <EditText
+            android:id="@+id/ed_text_fromdwon"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="من تحت" />
+            android:layout_height="wrap_content" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -299,17 +311,19 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:hint="طول الكبك"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout13"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout11">
 
-        <android.support.design.widget.TextInputEditText
+
+        <EditText
+            android:id="@+id/ed_text_caback_lenght"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="طول الكبك" />
+            android:layout_height="wrap_content" />
     </android.support.design.widget.TextInputLayout>
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/chec_geuoob"
         android:layout_width="84dp"
         android:layout_height="42dp"
         android:layout_marginLeft="12dp"
@@ -320,7 +334,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout12" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/check_gabsor"
         android:layout_width="80dp"
         android:layout_height="39dp"
         android:layout_marginEnd="16dp"
@@ -331,7 +345,7 @@
         android:text="الجبزور"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/checkBox"
+        app:layout_constraintStart_toEndOf="@+id/chec_geuoob"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout15" />
 
     <Spinner
@@ -358,28 +372,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/spinner_nick"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        app:layout_constraintTop_toBottomOf="@+id/chec_geuoob" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="140dp"
         android:layout_height="47dp"
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="8dp"
+        android:hint="بحــــــث"
         android:layout_marginRight="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/button_add"
         app:layout_constraintTop_toBottomOf="@+id/spinner_cabk">
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="بحــــــث" />
+
+        <EditText
+            android:id="@+id/edit_search"
+            android:layout_width="127dp"
+            android:layout_height="match_parent" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_add"
+
 
         android:layout_width="wrap_content"
         android:layout_height="44dp"
@@ -390,7 +407,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -399,7 +416,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="تعديل"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/button_add"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_nick" />
 
