@@ -1,13 +1,17 @@
 package com.alghubari.afaq;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +20,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import com.alghubari.afaq.SQdbHlper;
 import com.alghubari.afaq.StoreContract.CustomereEntry;
@@ -29,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     TextInputLayout mNameTextInputLayout;
 
     private SQdbHlper mDbHelper;
-    Button btadd,btnsearch;
+    Button btadd,btnsearch,btnedit;
     EditText cusName ,cusPhone,addressprice,valuePay,valueRminde,shoulderLenght,adresscount,
     adresslenght,cumLenght,chestLenght,nicksize,handsize,fromdwon,cabacklenght, reciveDate;
 
@@ -42,10 +50,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mDbHelper = new SQdbHlper(this);
+        File direct = new File(Environment.getExternalStorageDirectory() + "/Exam Creator");
+
+        if(!direct.exists())
+        {
+            if(direct.mkdir())
+            {
+                //directory is created;
+            }
+
+        }
+
+
+
         cusName = (EditText) findViewById(R.id.edittext_name);
         cusPhone = (EditText) findViewById(R.id.editext_phone);
         btadd = (Button) findViewById(R.id.button_add);
-        btnsearch = (Button) findViewById(R.id.button_edit);
+        btnsearch = (Button) findViewById(R.id.button_searchs);
+
+                btnedit = (Button) findViewById(R.id.button_edit);
        // CheckBox geobcheck,gabasorCheck;
       //
         //  Spinner nikspiner, cabackspiner;
@@ -333,5 +356,104 @@ phone=cusPhone.getText().toString();
        */
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.men_main, menu);
+        return true;
+
+    }
+    // This determines the title for each tab
+
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.export_db) {
+        exportDB();
+
+            return true;
+        }
+
+        if (id == R.id.import_db) {
+            importDB();
+
+            return true;
+        }
+        if (id == R.id.about_app) {
+
+            return true;
+            // Toast.makeText(this, "help page", Toast.LENGTH_LONG).show();
+            // return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    //importing database
+    private void importDB() {
+        // TODO Auto-generated method stub
+
+        try {
+            File sd = Environment.getExternalStorageDirectory();
+            File data  = Environment.getDataDirectory();
+
+            if (sd.canWrite()) {
+                String  currentDBPath= "//data//" + "com.alghubari.afaq"
+                        + "//databases//" + "afaqadress.db";
+                String backupDBPath  = "/Exam Creator/afaqadress.db";
+                File  backupDB= new File(data, currentDBPath);
+                File currentDB  = new File(sd, backupDBPath);
+
+                FileChannel src = new FileInputStream(currentDB).getChannel();
+                FileChannel dst = new FileOutputStream(backupDB).getChannel();
+                dst.transferFrom(src, 0, src.size());
+                src.close();
+                dst.close();
+                Toast.makeText(getBaseContext(), backupDB.toString(),
+                        Toast.LENGTH_LONG).show();
+
+            }
+        } catch (Exception e) {
+
+            Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG)
+                    .show();
+
+        }
+    }
+    //exporting database
+    private void exportDB() {
+        // TODO Auto-generated method stub
+
+        try {
+            File sd = Environment.getExternalStorageDirectory();
+            File data = Environment.getDataDirectory();
+
+            if (sd.canWrite()) {
+                String  currentDBPath= "//data//" + "com.alghubari.afaq"
+                        + "//databases//" + "afaqadress.db";
+                String backupDBPath  = "/Exam Creator/afaqadress.db";
+                File currentDB = new File(data, currentDBPath);
+                File backupDB = new File(sd, backupDBPath);
+
+                FileChannel src = new FileInputStream(currentDB).getChannel();
+                FileChannel dst = new FileOutputStream(backupDB).getChannel();
+                dst.transferFrom(src, 0, src.size());
+                src.close();
+                dst.close();
+                Toast.makeText(getBaseContext(), backupDB.toString(),
+                        Toast.LENGTH_LONG).show();
+
+            }
+        } catch (Exception e) {
+
+            Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG)
+                    .show();
+
+        }
+    }
+
 }
 
