@@ -9,11 +9,12 @@ public class SQdbHlper extends SQLiteOpenHelper {
     public static final String LOG_TAG =  SQdbHlper.class.getSimpleName();
 
     /** Name of the database file */
-    private static final String DATABASE_NAME = "afaqadress.db";
+   private static final String DATABASE_NAME = "afaqadress.db";
+   // private static final String DATABASE_NAME ="afaqdata.db";
     /**
      * Database version. If you change the database schema, you must increment the database version.
      */
-    private static final int DATABASE_VERSION = 1;
+   private static final int DATABASE_VERSION = 2;
 
     /**
      * Constructs a new instance of {@link SQdbHlper}.
@@ -51,7 +52,8 @@ public class SQdbHlper extends SQLiteOpenHelper {
                 + CustomereEntry.COLUMN_GABSOR_TYPE +" INTEGER NOT NULL,"
                 + CustomereEntry.COLUMN_GEEB_TYPE + " INTEGER NOT NULL,"
                 + CustomereEntry.COLUMN_CABACK_TYPE + " INTEGER NOT NULL,"
-                + CustomereEntry.COLUMN_NIKE_TYPE + " INTEGER NOT NULL);";
+                + CustomereEntry.COLUMN_NIKE_TYPE + " INTEGER NOT NULL,"
+                +CustomereEntry.COLUMN_PAGE_NUM + " TEXT);";
 
 
 
@@ -63,7 +65,10 @@ public class SQdbHlper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // If you need to add a column
+        db.execSQL("DROP TABLE IF EXISTS "+CustomereEntry.TABLE_NAME);
+        onCreate(db);
 
     }
 }

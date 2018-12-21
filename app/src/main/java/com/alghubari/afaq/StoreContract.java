@@ -55,7 +55,7 @@ public final class StoreContract {
         public static final String COLUMN_GABSOR_TYPE = "gabsor";
         public static final String COLUMN_CABACK_TYPE = "cack";
         public static final String COLUMN_NIKE_TYPE = "typenike";
-
+        public static final String COLUMN_PAGE_NUM = "pagenum";
 
         /**
          * Possible values for gabsor.
@@ -63,6 +63,7 @@ public final class StoreContract {
         public static final int WITH_GEEB = 1;
         public static final int WITH_OUT_GEEB = 0;
         public static final int WITH_HASHOWH = 1;
+        public static final int WITH_OUT_HASHOWH = 0;
         public static final int DABBLE = 0;
 
 
