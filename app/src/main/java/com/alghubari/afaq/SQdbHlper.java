@@ -14,7 +14,7 @@ public class SQdbHlper extends SQLiteOpenHelper {
     /**
      * Database version. If you change the database schema, you must increment the database version.
      */
-   private static final int DATABASE_VERSION = 2;
+   private static final int DATABASE_VERSION = 5;
 
     /**
      * Constructs a new instance of {@link SQdbHlper}.
@@ -35,25 +35,28 @@ public class SQdbHlper extends SQLiteOpenHelper {
         String SQL_CREATE_PETS_TABLE =  "CREATE TABLE " + CustomereEntry.TABLE_NAME + " ("
                 + CustomereEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + CustomereEntry.COLUMN_NAME_CUSTOMER + " TEXT NOT NULL, "
-                + CustomereEntry.COLUMN_PHONE_NUM + " TEXT,"
-                + CustomereEntry.COLUMN_PRICE + " TEXT, "
-                + CustomereEntry.COLUMN_PAYED_VALUE + " TEXT,"
-                + CustomereEntry.COLUMN_REMIND_VALUE + " TEXT,"
-                + CustomereEntry.COLUMN_RECIVE_DATE + " TEXT,"
-                + CustomereEntry.COLUMN_ADRESS_COUNT + " TEXT,"
-                + CustomereEntry.COLUMN_ADRESS_LENGHT + " TEXT,"
-                + CustomereEntry.COLUMN_SHOULDER_LENGHT + " TEXT,"
-                + CustomereEntry.COLUMN_KUM_LENGHT + " TEXT,"
-                + CustomereEntry.COLUMN_CHEST_WEDIGHT + " TEXT,"
-                + CustomereEntry.COLUMN_NIKE_SIZE + " TEXT,"
-                + CustomereEntry.COLUMN_HAND_LENGHT + " TEXT,"
-                + CustomereEntry.COLUMN_CABACK_LENGHT + " TEXT,"
-                + CustomereEntry.COLUMN_FROM_DAWON + " TEXT,"
+                + CustomereEntry.COLUMN_PHONE_NUM + " INTEGER,"
+                + CustomereEntry.COLUMN_DAY_OF_DATE + " DATETIME,"
+                + CustomereEntry.COLUMN_PRICE + " INTEGER, "
+                + CustomereEntry.COLUMN_PAYED_VALUE + " INTEGER,"
+                + CustomereEntry.COLUMN_REMIND_VALUE + " INTEGER,"
+                + CustomereEntry.COLUMN_RECIVE_DATE + " DATETIME,"
+                + CustomereEntry.COLUMN_ADRESS_COUNT + " INTEGER,"
+                + CustomereEntry.COLUMN_ADRESS_LENGHT + " INTEGER,"
+                + CustomereEntry.COLUMN_SHOULDER_LENGHT + " INTEGER,"
+                + CustomereEntry.COLUMN_KUM_LENGHT + " INTEGER,"
+                + CustomereEntry.COLUMN_CHEST_WEDIGHT + " INTEGER,"
+                + CustomereEntry.COLUMN_NIKE_SIZE + " INTEGER,"
+                + CustomereEntry.COLUMN_HAND_LENGHT + " INTEGER,"
+                + CustomereEntry.COLUMN_CABACK_LENGHT + " INTEGER,"
+                + CustomereEntry.COLUMN_FROM_DAWON + " INTEGER,"
                 + CustomereEntry.COLUMN_GABSOR_TYPE +" INTEGER NOT NULL,"
                 + CustomereEntry.COLUMN_GEEB_TYPE + " INTEGER NOT NULL,"
                 + CustomereEntry.COLUMN_CABACK_TYPE + " INTEGER NOT NULL,"
                 + CustomereEntry.COLUMN_NIKE_TYPE + " INTEGER NOT NULL,"
-                +CustomereEntry.COLUMN_PAGE_NUM + " TEXT);";
+                + CustomereEntry.COLUMN_PAGE_NUM + " INTEGER,"
+                + CustomereEntry.COLUMN_IS_READY +" INTEGER ,"
+                + CustomereEntry.COLUMN_IS_BEGIN_WORK +" INTEGER);";
 
 
 

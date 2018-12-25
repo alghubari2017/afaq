@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -35,7 +36,7 @@
                 android:id="@+id/edittext_address_price"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -49,7 +50,7 @@
                 android:id="@+id/editext_value_pay"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
 
@@ -65,7 +66,7 @@
                 android:id="@+id/editext_remained_value"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
 
@@ -81,7 +82,7 @@
                 android:id="@+id/editext_shoulder_lenght"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -96,7 +97,9 @@
             <EditText
                 android:id="@+id/ed_text_hand"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -111,7 +114,8 @@
             <EditText
                 android:id="@+id/ed_text_fromdwon"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
         </android.support.design.widget.TextInputLayout>
 
         <CheckBox
@@ -120,12 +124,13 @@
             android:layout_height="wrap_content"
 
             android:text="الجبزور" />
+        <CheckBox
+            android:id="@+id/chec_geuoob"
+            android:layout_width="100dp"
+            android:layout_height="44dp"
 
-        <ImageButton
-            android:id="@+id/imageButton_add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/add_user" />
+            android:text="الجيوب" />
+
 
 
     </LinearLayout>
@@ -171,7 +176,7 @@
                 android:id="@+id/editext_phone"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="phone" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -182,13 +187,16 @@
             android:layout_height="wrap_content"
 
             android:hint="التاريخ">
-
             <EditText
                 android:id="@+id/edittext_date"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:ems="10"
+                android:inputType="date" />
+
         </android.support.design.widget.TextInputLayout>
+
+
 
 
         <Spinner
@@ -216,7 +224,8 @@
             <EditText
                 android:id="@+id/ed_text_page_number"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
         </android.support.design.widget.TextInputLayout>
 
         <CheckBox
@@ -231,6 +240,12 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/update_user" />
+
+        <ImageButton
+            android:id="@+id/imageButton_save"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/save_button" />
 
 
     </LinearLayout>
@@ -257,7 +272,7 @@
                 android:id="@+id/editext_adress_count"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="number"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -271,7 +286,7 @@
                 android:id="@+id/editext_adress_lenght"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
 
@@ -285,7 +300,8 @@
             <EditText
                 android:id="@+id/ed_text_alkm"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
 
 
         </android.support.design.widget.TextInputLayout>
@@ -301,7 +317,8 @@
             <EditText
                 android:id="@+id/ed_text_chest"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -316,7 +333,8 @@
             <EditText
                 android:id="@+id/ed_text_nick"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -330,15 +348,23 @@
             <EditText
                 android:id="@+id/ed_text_caback_lenght"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
         </android.support.design.widget.TextInputLayout>
 
         <CheckBox
-            android:id="@+id/chec_geuoob"
+            android:id="@+id/chec_work"
             android:layout_width="100dp"
             android:layout_height="44dp"
 
-            android:text="الجيوب" />
+            android:text="بدءعمل" />
+
+        <ImageButton
+            android:id="@+id/imageButton_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/add_user" />
+
 
         <ImageButton
             android:id="@+id/imageButton_search"

@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
+import java.sql.Date;
 import java.util.ArrayList;
 import com.alghubari.afaq.SQdbHlper;
 import com.alghubari.afaq.StoreContract.CustomereEntry;
@@ -39,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
     TextInputLayout mNameTextInputLayout;
 
     private SQdbHlper mDbHelper;
-    ImageButton btadd1,btnsearch1,btedit11;
+    ImageButton btadd1,btnsearch1,btedit11,btsave;
   //ImageButton btadd,btnsearch,btnedit;
     EditText cusName ,cusPhone,addressprice,valuePay,valueRminde,shoulderLenght,adresscount,
     adresslenght,cumLenght,chestLenght,nicksize,handsize,fromdwon,cabacklenght, reciveDate,ednumpage;
 
-    CheckBox geobcheck,gabasorCheck;
+    CheckBox geobcheck,gabasorCheck,gahschec,beginworkcheck;
     Spinner nikspiner, cabackspiner;
 
 
@@ -74,29 +75,198 @@ public class MainActivity extends AppCompatActivity {
        btadd1= (ImageButton) findViewById(R.id.imageButton_add);
        btnsearch1=(ImageButton) findViewById(R.id.imageButton_search);
        btedit11= (ImageButton)findViewById(R.id.imageButton_update);
+      btsave = (ImageButton)findViewById(R.id.imageButton_save);
+      btsave.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              insertPet();
+
+          }
+          private void insertPet() {
+              int iswork,isready;
+              String name, phone, pnum, count, addlenght, vprice, vpay, vremind, sholder, dateadd, cum, chest, nick, dwon, hand, caback, geeb, gabsoor, niktype, cabacktype = "";
+              niktype = "";
+              pnum = "";
+
+              name = "";
+              phone = "";
+              count = "";
+              addlenght = "";
+              vprice = "";
+              vpay = "";
+              vremind = "";
+              sholder = "";
+              dateadd = "";
+              cum = "";
+              chest = "";
+              nick = "";
+              dwon = "";
+              hand = "";
+              caback = "";
+
+
+
+
+
+              SQLiteDatabase db = mDbHelper.getWritableDatabase();
+              name = cusName.getText().toString();
+              phone = cusPhone.getText().toString();
+              pnum = ednumpage.getText().toString();
+              count=adresscount.getText().toString();
+              addlenght=adresslenght.getText().toString();
+              vprice=addressprice.getText().toString();
+              vpay=valuePay.getText().toString();
+              vremind=valueRminde.getText().toString();
+              dateadd=reciveDate.getText().toString();
+              cum=cumLenght.getText().toString();
+              nick=nicksize.getText().toString();
+              chest=chestLenght.getText().toString();
+              sholder=shoulderLenght.getText().toString();
+              cabacktype=cabacklenght.getText().toString();
+              niktype=nikspiner.getSelectedItem().toString();
+              cabacktype=cabackspiner.getSelectedItem().toString();
+              hand=handsize.getText().toString();
+              caback=cabacklenght.getText().toString();
+              dwon=fromdwon.getText().toString();
+             // boolean gahschec=false;
+
+
+
+      //gahschec=(CheckBox)findViewById(R.id.check_gahas) ;
+              beginworkcheck=(CheckBox)findViewById(R.id.chec_work) ;
+              // Create a ContentValues object where column names are the keys,
+              // and Toto's pet attributes are the values.
+              ContentValues values = new ContentValues();
+              values.put(COLUMN_NAME_CUSTOMER, name);
+              values.put(COLUMN_PHONE_NUM, phone);
+              values.put(CustomereEntry.COLUMN_DAY_OF_DATE, "2014-4-2");
+              values.put(CustomereEntry.COLUMN_PRICE, vprice);
+              values.put(CustomereEntry.COLUMN_REMIND_VALUE, vremind);
+              values.put(CustomereEntry.COLUMN_PAYED_VALUE, vpay);
+              values.put(CustomereEntry.COLUMN_RECIVE_DATE, dateadd);
+              values.put(CustomereEntry.COLUMN_ADRESS_COUNT, count);
+              values.put(CustomereEntry.COLUMN_ADRESS_LENGHT, addlenght);
+              values.put(CustomereEntry.COLUMN_SHOULDER_LENGHT, sholder);
+              values.put(CustomereEntry.COLUMN_KUM_LENGHT, cum);
+
+              values.put(CustomereEntry.COLUMN_CHEST_WEDIGHT, chest);
+              values.put(CustomereEntry.COLUMN_NIKE_SIZE, nick);
+
+              values.put(CustomereEntry.COLUMN_HAND_LENGHT, hand);
+              values.put(CustomereEntry.COLUMN_CABACK_LENGHT, caback);
+              values.put(CustomereEntry.COLUMN_FROM_DAWON, dwon);
+              if(gabasorCheck.isChecked()==true)
+              {
+                  values.put(CustomereEntry.COLUMN_GABSOR_TYPE, CustomereEntry.WITH_HASHOWH);
+              }
+              else
+                  values.put(CustomereEntry.COLUMN_GABSOR_TYPE, CustomereEntry.WITH_OUT_HASHOWH);
+
+
+              if(geobcheck.isChecked()==true)
+              {
+                  values.put(CustomereEntry.COLUMN_GEEB_TYPE, CustomereEntry.WITH_GEEB);
+              }
+              else
+                  values.put(CustomereEntry.COLUMN_GEEB_TYPE, CustomereEntry.WITH_OUT_GEEB);
+
+
+
+
+              if(cabackspiner.getSelectedItemPosition()==0)
+              {
+                  values.put(CustomereEntry.COLUMN_CABACK_TYPE, CustomereEntry.WITH_HASHOWH);
+              }
+              else if(cabackspiner.getSelectedItemPosition()==1)
+              {
+                  values.put(CustomereEntry.COLUMN_CABACK_TYPE, CustomereEntry.WITH_OUT_HASHOWH);
+              }
+
+              else
+                  values.put(CustomereEntry.COLUMN_CABACK_TYPE, CustomereEntry.DABBLE);
+
+
+
+              if(nikspiner.getSelectedItemPosition()==0)
+              {
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_SADAH);
+              }
+              else if(nikspiner.getSelectedItemPosition()==1)
+              {
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_CHINA_KALAB);
+              }
+              else if(nikspiner.getSelectedItemPosition()==2)
+              {
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_CHINA_KALAB_TWO_DGREE);
+              }
+              else if(nikspiner.getSelectedItemPosition()==3)
+              {
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_CHINA_THREE_DGREE);
+              }
+              else if(nikspiner.getSelectedItemPosition()==4)
+              {
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_CHINA_TWO_DGREE);
+              }
+              else if(nikspiner.getSelectedItemPosition()==5)
+              {
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_SADAH_KLAB);
+              }
+              else if(nikspiner.getSelectedItemPosition()==6)
+              {
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_KALAB_OPEN);
+              }
+
+
+              else
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_ROYAL_KALAB);
+
+
+              //values.put(CustomereEntry.COLUMN_CABACK_TYPE, cabacktype);
+             // values.put(CustomereEntry.COLUMN_NIKE_TYPE, niktype);
+              values.put(CustomereEntry.COLUMN_PAGE_NUM, pnum);
+
+              if(gahschec.isChecked()==true)
+              {
+                  values.put(CustomereEntry.COLUMN_IS_READY, CustomereEntry.IS_READY);
+              }
+              else
+                  values.put(CustomereEntry.COLUMN_IS_READY, CustomereEntry.IS_NOT_READY);
+
+
+              if(beginworkcheck.isChecked()==true)
+              {
+                  values.put(CustomereEntry.COLUMN_IS_BEGIN_WORK, CustomereEntry.IS_BEGIN_WORK);
+              }
+              else
+                  values.put(CustomereEntry.COLUMN_IS_BEGIN_WORK, CustomereEntry.IS_NOT_BEGIN_WORK);
+
+
+
+             // values.put(CustomereEntry.COLUMN_IS_BEGIN_WORK, 1);
+             // values.put(CustomereEntry.COLUMN_IS_READY, 1);
+              // Insert a new row for Toto in the database, returning the ID of that new row.
+              // The first argument for db.insert() is the pets table name.
+              // The second argument provides the name of a column in which the framework
+              // can insert NULL in the event that the ContentValues is empty (if
+              // this is set to "null", then the framework will not insert a row when
+              // there are no values).
+              // The third argument is the ContentValues object containing the info for Toto.
+              long newRowId = db.insert(CustomereEntry.TABLE_NAME, null, values);
+              if (newRowId != -1)
+                  Toast.makeText(MainActivity.this, "New row added, row id: " + newRowId, Toast.LENGTH_SHORT).show();
+              else
+                  Toast.makeText(MainActivity.this, "Something wrong", Toast.LENGTH_SHORT).show();
+
+          }
+      });
         btnsearch1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name,phone,npage,count,addlenght,vprice,vpay,vremind,sholder,dateadd,cum,chest,nick,dwon,hand,caback,geeb,gabsoor,niktype,cabacktype = "";
-                niktype="";
-                npage="";
-                geeb="";
-                name="";
-                phone="";
-                count="";
-                addlenght="";
-                vprice="";
-                vpay="";
-                vremind="" ;
-                sholder="";
-                dateadd="";
-                cum="";
-                chest="";
-                nick="";
-                dwon="";
-                hand="";
-                caback="";
-                gabsoor="";
+                String name,dateadd,daydate;
+                name="";dateadd="";daydate="";
+                int phone,npage,count,addlenght,vprice,vpay,vremind,sholder,cum,chest,nick,dwon,hand,caback,geeb,gabsoor,niktype,cabacktype,iswork,isready ;
+                phone=0;npage=0;count=0;addlenght=0;vprice=0;vpay=0;vremind=0;sholder=0;cum=0;chest=0;nick=0;dwon=0;hand=0;caback=0;geeb=0;gabsoor=0;niktype=0;cabacktype =0;
+                iswork=0;isready=0;
 
 
                 SQLiteDatabase db = mDbHelper.getReadableDatabase();
@@ -109,6 +279,7 @@ public class MainActivity extends AppCompatActivity {
                         new String[]{CustomereEntry.COLUMN_NAME_CUSTOMER
 
                                 , CustomereEntry.COLUMN_PHONE_NUM
+                                , CustomereEntry.COLUMN_DAY_OF_DATE
                                 , CustomereEntry.COLUMN_PRICE
                                 , CustomereEntry.COLUMN_PAYED_VALUE
                                 , CustomereEntry.COLUMN_REMIND_VALUE
@@ -126,7 +297,9 @@ public class MainActivity extends AppCompatActivity {
                                 , CustomereEntry.COLUMN_GEEB_TYPE
                                 , CustomereEntry.COLUMN_CABACK_TYPE
                                 , CustomereEntry.COLUMN_NIKE_TYPE
-                                , CustomereEntry.COLUMN_PAGE_NUM},
+                                , CustomereEntry.COLUMN_PAGE_NUM
+                                ,CustomereEntry.COLUMN_IS_READY
+                                ,CustomereEntry.COLUMN_IS_BEGIN_WORK},
                         CustomereEntry.COLUMN_NAME_CUSTOMER + "=?",
                         new String[]{String.valueOf(searchStr)}, null, null, null, null);
 
@@ -137,77 +310,90 @@ public class MainActivity extends AppCompatActivity {
                             // int idNumber = cursor.getInt(cursor.getColumnIndex("_ID"));
                             name =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_NAME_CUSTOMER));
 
-                            phone =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_PHONE_NUM));
-
+                            phone =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_PHONE_NUM));
+                           daydate=cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_DAY_OF_DATE));
                             dateadd =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_RECIVE_DATE));
-                            vprice =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_PRICE));
-                            vpay =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_PAYED_VALUE));
-                            vremind =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_REMIND_VALUE));
+                            vprice =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_PRICE));
+                            vpay =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_PAYED_VALUE));
+                            vremind =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_REMIND_VALUE));
 
 
-                            count =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_RECIVE_DATE));
+                            count =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_RECIVE_DATE));
 
 
-                            sholder =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_SHOULDER_LENGHT));
-                            addlenght =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_ADRESS_LENGHT));
+                            sholder =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_SHOULDER_LENGHT));
+                            addlenght =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_ADRESS_LENGHT));
 
-                            nick =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_NIKE_SIZE));
+                            nick =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_NIKE_SIZE));
 
 
-                            cum =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_KUM_LENGHT));
+                            cum =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_KUM_LENGHT));
 
-                            chest =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_CHEST_WEDIGHT));
+                            chest =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_CHEST_WEDIGHT));
 
-                            hand=cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_HAND_LENGHT));
+                            hand=cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_HAND_LENGHT));
 
-                            dwon =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_FROM_DAWON));
+                            dwon =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_FROM_DAWON));
 
-                            caback =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_CABACK_LENGHT));
-                            geeb =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_GEEB_TYPE));
-                            gabsoor =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_GABSOR_TYPE));
-                            niktype =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_NIKE_TYPE));
-                            cabacktype =cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_CABACK_TYPE));
+                            caback =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_CABACK_LENGHT));
+                            geeb =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_GEEB_TYPE));
+                            gabsoor =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_GABSOR_TYPE));
+                            niktype =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_NIKE_TYPE));
+                            cabacktype =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_CABACK_TYPE));
 
-                            npage=cursor.getString(cursor.getColumnIndex(CustomereEntry.COLUMN_PAGE_NUM));
+                            npage=cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_PAGE_NUM));
+                            isready=cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_IS_READY));
+                            iswork=cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_IS_BEGIN_WORK));
                             //valuePay,valueRminde,shoulderLenght,adresscount,
                             //    adresslenght,cumLenght,chestLenght,nicksize,handsize,fromdwon,cabacklenght, reciveDate;
                             Toast.makeText(MainActivity.this, "we find row, row id: " + name, Toast.LENGTH_SHORT).show();
                             //   Log.v("IdNumber",_ID);
                             Log.v("COLUMN_PHONE_NUM",COLUMN_PHONE_NUM);
                             cusName.setText(name);
-                            cusPhone.setText(phone);
+                            cusPhone.setText(String.valueOf(phone));
 
-                            addressprice.setText(vprice);
-                            valuePay.setText(vpay);
-                            valueRminde.setText(vremind);
-                            nicksize.setText(nick);
-                            adresscount.setText(count);
+                            addressprice.setText(String.valueOf(vprice));
+                            valuePay.setText(String.valueOf(vpay));
+                            valueRminde.setText(String.valueOf(vremind));
+                            nicksize.setText(String.valueOf(nick));
+                            adresscount.setText(String.valueOf(count));
                             reciveDate.setText(dateadd);
-                            shoulderLenght.setText(sholder);
-                            adresslenght.setText(addlenght);
+                            shoulderLenght.setText(String.valueOf(sholder));
+                            adresslenght.setText(String.valueOf(addlenght));
 
-                            cumLenght.setText(cum);
+                            cumLenght.setText(String.valueOf(cum));
 
-                            chestLenght.setText(chest);
+                            chestLenght.setText(String.valueOf(chest));
 
-                            handsize.setText(hand);
+                            handsize.setText(String.valueOf(hand));
 
-                            fromdwon.setText(dwon);
+                            fromdwon.setText(String.valueOf(dwon));
 
-                            cabacklenght.setText(caback);
+                            cabacklenght.setText(String.valueOf(caback));
 
 
                             geobcheck.setSelected(true);
-                            if(Integer.parseInt(geeb)==1) {
+                            if(geeb==1) {
                                 geobcheck.setChecked(true);
                             }
                             else
                                 geobcheck.setChecked(false);
 
+                            if(isready==1) {
+                                gahschec.setChecked(true);
+                            }
+                            else
+                                gahschec.setChecked(false);
+                            if(iswork==1) {
+                                beginworkcheck.setChecked(true);
+                            }
+                            else
+                                beginworkcheck.setChecked(false);
+
                             // gabasorCheck.setTextKeepState(gabsoor);
-                            nikspiner.setSelection(Integer.parseInt(niktype));
-                            cabackspiner.setSelection(Integer.parseInt(cabacktype));
-                            ednumpage.setText(npage);
+                            nikspiner.setSelection(niktype);
+                            cabackspiner.setSelection(cabacktype);
+                            ednumpage.setText(String.valueOf(npage));
 
                         }while (cursor.moveToNext());
                     }
@@ -220,77 +406,11 @@ public class MainActivity extends AppCompatActivity {
 btadd1.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-        insertPet();
+
+
 
     }
-    private void insertPet() {
-        String name, phone, pnum, count, addlenght, vprice, vpay, vremind, sholder, dateadd, cum, chest, nick, dwon, hand, caback, geeb, gabsoor, niktype, cabacktype = "";
-        niktype = "";
-        pnum = "";
-        geeb = "";
-        name = "";
-        phone = "";
-        count = "";
-        addlenght = "";
-        vprice = "";
-        vpay = "";
-        vremind = "";
-        sholder = "";
-        dateadd = "";
-        cum = "";
-        chest = "";
-        nick = "";
-        dwon = "";
-        hand = "";
-        caback = "";
-        gabsoor = "";
 
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        name = cusName.getText().toString();
-        phone = cusPhone.getText().toString();
-        pnum = ednumpage.getText().toString();
-
-        // Create a ContentValues object where column names are the keys,
-        // and Toto's pet attributes are the values.
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME_CUSTOMER, name);
-        values.put(COLUMN_PHONE_NUM, phone);
-        values.put(CustomereEntry.COLUMN_PRICE, "7000");
-        values.put(CustomereEntry.COLUMN_REMIND_VALUE, "2000");
-        values.put(CustomereEntry.COLUMN_PAYED_VALUE, "5000");
-        values.put(CustomereEntry.COLUMN_RECIVE_DATE, "5000");
-        values.put(CustomereEntry.COLUMN_ADRESS_COUNT, "1");
-        values.put(CustomereEntry.COLUMN_ADRESS_LENGHT, "50");
-        values.put(CustomereEntry.COLUMN_SHOULDER_LENGHT, "2");
-        values.put(CustomereEntry.COLUMN_KUM_LENGHT, "2");
-
-        values.put(CustomereEntry.COLUMN_CHEST_WEDIGHT, "10");
-        values.put(CustomereEntry.COLUMN_NIKE_SIZE, "4");
-
-        values.put(CustomereEntry.COLUMN_HAND_LENGHT, "5");
-        values.put(CustomereEntry.COLUMN_CABACK_LENGHT, "10");
-        values.put(CustomereEntry.COLUMN_FROM_DAWON, "7");
-        values.put(CustomereEntry.COLUMN_GABSOR_TYPE, CustomereEntry.WITH_HASHOWH);
-        values.put(CustomereEntry.COLUMN_GEEB_TYPE, CustomereEntry.WITH_GEEB);
-        values.put(CustomereEntry.COLUMN_CABACK_TYPE, CustomereEntry.WITH_HASHOWH);
-        values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_ROYAL_KALAB);
-        values.put(CustomereEntry.COLUMN_PAGE_NUM, "54");
-
-
-        // Insert a new row for Toto in the database, returning the ID of that new row.
-        // The first argument for db.insert() is the pets table name.
-        // The second argument provides the name of a column in which the framework
-        // can insert NULL in the event that the ContentValues is empty (if
-        // this is set to "null", then the framework will not insert a row when
-        // there are no values).
-        // The third argument is the ContentValues object containing the info for Toto.
-        long newRowId = db.insert(CustomereEntry.TABLE_NAME, null, values);
-        if (newRowId != -1)
-            Toast.makeText(MainActivity.this, "New row added, row id: " + newRowId, Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(MainActivity.this, "Something wrong", Toast.LENGTH_SHORT).show();
-
-    }
     });
       btedit11.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -309,6 +429,10 @@ btadd1.setOnClickListener(new View.OnClickListener() {
         //  Spinner nikspiner, cabackspiner;
         geobcheck=(CheckBox) findViewById(R.id.chec_geuoob);
         gabasorCheck=(CheckBox) findViewById(R.id.check_gabsor);
+
+      gahschec=(CheckBox) findViewById(R.id.check_gahas);
+
+       beginworkcheck=(CheckBox) findViewById(R.id.chec_work);
         nikspiner=(Spinner) findViewById(R.id.spinner_nick);
        cabackspiner=(Spinner) findViewById(R.id.spinner_cabk);
 
@@ -365,6 +489,7 @@ btadd1.setOnClickListener(new View.OnClickListener() {
         nicklist.add("قلاب ملكي");
 
         cabacklist.add("حشوه");
+        cabacklist.add("بدون حشوه");
 
         cabacklist.add("دبل");
 
@@ -415,6 +540,7 @@ btadd1.setOnClickListener(new View.OnClickListener() {
         }
         if (id == R.id.about_app) {
 
+            startActivity(new Intent(MainActivity.this,AboutUs.class));
             return true;
             // Toast.makeText(this, "help page", Toast.LENGTH_LONG).show();
             // return true;

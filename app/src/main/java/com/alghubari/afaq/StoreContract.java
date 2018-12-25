@@ -29,13 +29,13 @@ public final class StoreContract {
 
         /**
          * the phone of customer
-         * Type:TEXT
+         * Type:Number
          * /
 
          */
 
         public static final String COLUMN_PHONE_NUM = "phone";
-
+        public static final String COLUMN_DAY_OF_DATE = "dayofdate";
         public static final String COLUMN_PRICE = "price";
 
         public static final String COLUMN_PAYED_VALUE = "payed";
@@ -56,15 +56,17 @@ public final class StoreContract {
         public static final String COLUMN_CABACK_TYPE = "cack";
         public static final String COLUMN_NIKE_TYPE = "typenike";
         public static final String COLUMN_PAGE_NUM = "pagenum";
+        public static final String COLUMN_IS_READY="isready";
+        public static final String COLUMN_IS_BEGIN_WORK="isbeginwork";
 
         /**
          * Possible values for gabsor.
          */
         public static final int WITH_GEEB = 1;
         public static final int WITH_OUT_GEEB = 0;
-        public static final int WITH_HASHOWH = 1;
-        public static final int WITH_OUT_HASHOWH = 0;
-        public static final int DABBLE = 0;
+        public static final int WITH_HASHOWH = 0;
+        public static final int WITH_OUT_HASHOWH = 1;
+        public static final int DABBLE = 2;
 
 
 
@@ -75,11 +77,17 @@ public final class StoreContract {
         public static final int NIKE_TYPE_SADAH =0;
         public static final int NIKE_TYPE_CHINA_KALAB =1;
         public static final int NIKE_TYPE_CHINA_KALAB_TWO_DGREE =2;
-        public static final int NIKE_TYPE_CHINA_KALAB_THREE_DGREE =3;
-        public static final int NIKE_TYPE_CHINA_KALAB_SADAH=4;
-        public static final int NIKE_TYPE_KALAB_OPEN=5;
-        public static final int NIKE_TYPE_ROYAL_KALAB=6;
+        public static final int NIKE_TYPE_CHINA_THREE_DGREE =3;
+        public static final int NIKE_TYPE_CHINA_TWO_DGREE=4;
+        public static final int NIKE_TYPE_SADAH_KLAB=5;
+        public static final int NIKE_TYPE_KALAB_OPEN=6;
+        public static final int NIKE_TYPE_ROYAL_KALAB=7;
 
+        public static final int IS_READY=1;
+        public static final int IS_NOT_READY=0;
+
+        public static final int IS_BEGIN_WORK=1;
+        public static final int IS_NOT_BEGIN_WORK=0;
 
 
 

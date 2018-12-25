@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/export_db"
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-        android:title="تصدير قاعدة البيانات"
-       />
+    <item
+        android:id="@+id/export_db"
+
+        android:enabled="true"
+        android:icon="@drawable/export_db"
+        android:title="تصدير "
+         />
     <item android:id="@+id/import_db"
 
-        android:title="استيراد قاعدة البيانات" />
+        android:title="استيراد "
+        android:icon="@drawable/imprt_db"/>
 
     <item android:id="@+id/about_app"
 
-        android:title="معلومات حول التطبيق" />
+        android:title=" حول التطبيق"
+        android:icon="@drawable/about_me"/>
 
 </menu>
