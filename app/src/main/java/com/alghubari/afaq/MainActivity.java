@@ -82,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
               insertPet();
 
           }
+
+
           private void insertPet() {
               int iswork,isready;
               String name, phone, pnum, count, addlenght, vprice, vpay, vremind, sholder, dateadd, cum, chest, nick, dwon, hand, caback, geeb, gabsoor, niktype, cabacktype = "";
@@ -406,7 +408,7 @@ public class MainActivity extends AppCompatActivity {
 btadd1.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-
+cusName.setText("");
 
 
     }
@@ -415,9 +417,179 @@ btadd1.setOnClickListener(new View.OnClickListener() {
       btedit11.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
+              CustomerModle customerModle2=new CustomerModle();
 
+              updateProfile(customerModle2);
 
           }
+          public boolean updateProfile(CustomerModle customerModle1)
+          {
+              int iswork,isready;
+              String name, phone, pnum, count, addlenght, vprice, vpay, vremind, sholder, dateadd, cum, chest, nick, dwon, hand, caback, geeb, gabsoor, niktype, cabacktype = "";
+              niktype = "";
+              pnum = "";
+
+              name = "";
+              phone = "";
+              count = "";
+              addlenght = "";
+              vprice = "";
+              vpay = "";
+              vremind = "";
+              sholder = "";
+              dateadd = "";
+              cum = "";
+              chest = "";
+              nick = "";
+              dwon = "";
+              hand = "";
+              caback = "";
+
+
+
+              CustomerModle customerModle= new CustomerModle();
+              SQLiteDatabase db = mDbHelper.getWritableDatabase();
+
+              name = cusName.getText().toString();
+              phone = cusPhone.getText().toString();
+              pnum = ednumpage.getText().toString();
+              count=adresscount.getText().toString();
+              addlenght=adresslenght.getText().toString();
+              vprice=addressprice.getText().toString();
+              vpay=valuePay.getText().toString();
+              vremind=valueRminde.getText().toString();
+              dateadd=reciveDate.getText().toString();
+              cum=cumLenght.getText().toString();
+              nick=nicksize.getText().toString();
+              chest=chestLenght.getText().toString();
+              sholder=shoulderLenght.getText().toString();
+              cabacktype=cabacklenght.getText().toString();
+              niktype=nikspiner.getSelectedItem().toString();
+              cabacktype=cabackspiner.getSelectedItem().toString();
+              hand=handsize.getText().toString();
+              caback=cabacklenght.getText().toString();
+              dwon=fromdwon.getText().toString();
+              // boolean gahschec=false;
+
+
+
+              //gahschec=(CheckBox)findViewById(R.id.check_gahas) ;
+              beginworkcheck=(CheckBox)findViewById(R.id.chec_work) ;
+              // Create a ContentValues object where column names are the keys,
+              // and Toto's pet attributes are the values.
+              ContentValues values = new ContentValues();
+              values.put(COLUMN_NAME_CUSTOMER, name);
+              values.put(COLUMN_PHONE_NUM, phone);
+              values.put(CustomereEntry.COLUMN_DAY_OF_DATE, "2014-4-2");
+              values.put(CustomereEntry.COLUMN_PRICE, vprice);
+              values.put(CustomereEntry.COLUMN_REMIND_VALUE, vremind);
+              values.put(CustomereEntry.COLUMN_PAYED_VALUE, vpay);
+              values.put(CustomereEntry.COLUMN_RECIVE_DATE, dateadd);
+              values.put(CustomereEntry.COLUMN_ADRESS_COUNT, count);
+              values.put(CustomereEntry.COLUMN_ADRESS_LENGHT, addlenght);
+              values.put(CustomereEntry.COLUMN_SHOULDER_LENGHT, sholder);
+              values.put(CustomereEntry.COLUMN_KUM_LENGHT, cum);
+
+              values.put(CustomereEntry.COLUMN_CHEST_WEDIGHT, chest);
+              values.put(CustomereEntry.COLUMN_NIKE_SIZE, nick);
+
+              values.put(CustomereEntry.COLUMN_HAND_LENGHT, hand);
+              values.put(CustomereEntry.COLUMN_CABACK_LENGHT, caback);
+              values.put(CustomereEntry.COLUMN_FROM_DAWON, dwon);
+              if(gabasorCheck.isChecked()==true)
+              {
+                  values.put(CustomereEntry.COLUMN_GABSOR_TYPE, CustomereEntry.WITH_HASHOWH);
+              }
+              else
+                  values.put(CustomereEntry.COLUMN_GABSOR_TYPE, CustomereEntry.WITH_OUT_HASHOWH);
+
+
+              if(geobcheck.isChecked()==true)
+              {
+                  values.put(CustomereEntry.COLUMN_GEEB_TYPE, CustomereEntry.WITH_GEEB);
+              }
+              else
+                  values.put(CustomereEntry.COLUMN_GEEB_TYPE, CustomereEntry.WITH_OUT_GEEB);
+
+
+
+
+              if(cabackspiner.getSelectedItemPosition()==0)
+              {
+                  values.put(CustomereEntry.COLUMN_CABACK_TYPE, CustomereEntry.WITH_HASHOWH);
+              }
+              else if(cabackspiner.getSelectedItemPosition()==1)
+              {
+                  values.put(CustomereEntry.COLUMN_CABACK_TYPE, CustomereEntry.WITH_OUT_HASHOWH);
+              }
+
+              else
+                  values.put(CustomereEntry.COLUMN_CABACK_TYPE, CustomereEntry.DABBLE);
+
+
+
+              if(nikspiner.getSelectedItemPosition()==0)
+              {
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_SADAH);
+              }
+              else if(nikspiner.getSelectedItemPosition()==1)
+              {
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_CHINA_KALAB);
+              }
+              else if(nikspiner.getSelectedItemPosition()==2)
+              {
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_CHINA_KALAB_TWO_DGREE);
+              }
+              else if(nikspiner.getSelectedItemPosition()==3)
+              {
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_CHINA_THREE_DGREE);
+              }
+              else if(nikspiner.getSelectedItemPosition()==4)
+              {
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_CHINA_TWO_DGREE);
+              }
+              else if(nikspiner.getSelectedItemPosition()==5)
+              {
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_SADAH_KLAB);
+              }
+              else if(nikspiner.getSelectedItemPosition()==6)
+              {
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_KALAB_OPEN);
+              }
+
+
+              else
+                  values.put(CustomereEntry.COLUMN_NIKE_TYPE, CustomereEntry.NIKE_TYPE_ROYAL_KALAB);
+
+
+              //values.put(CustomereEntry.COLUMN_CABACK_TYPE, cabacktype);
+              // values.put(CustomereEntry.COLUMN_NIKE_TYPE, niktype);
+              values.put(CustomereEntry.COLUMN_PAGE_NUM, pnum);
+
+              if(gahschec.isChecked()==true)
+              {
+                  values.put(CustomereEntry.COLUMN_IS_READY, CustomereEntry.IS_READY);
+              }
+              else
+                  values.put(CustomereEntry.COLUMN_IS_READY, CustomereEntry.IS_NOT_READY);
+
+
+              if(beginworkcheck.isChecked()==true)
+              {
+                  values.put(CustomereEntry.COLUMN_IS_BEGIN_WORK, CustomereEntry.IS_BEGIN_WORK);
+              }
+              else
+                  values.put(CustomereEntry.COLUMN_IS_BEGIN_WORK, CustomereEntry.IS_NOT_BEGIN_WORK);
+
+
+
+
+              db.update(CustomereEntry.TABLE_NAME,values,CustomereEntry.COLUMN_NAME_CUSTOMER + "=?",new String[]{name});
+              db.close();
+              return true;
+          }
+
+
 
 
 
