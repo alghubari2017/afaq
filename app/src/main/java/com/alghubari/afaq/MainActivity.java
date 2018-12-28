@@ -710,6 +710,13 @@ cusName.setText("");
 
             return true;
         }
+        if (id == R.id.taske_activity) {
+
+            startActivity(new Intent(MainActivity.this,TaskeActivity.class));
+            return true;
+            // Toast.makeText(this, "help page", Toast.LENGTH_LONG).show();
+            // return true;
+        }
         if (id == R.id.about_app) {
 
             startActivity(new Intent(MainActivity.this,AboutUs.class));

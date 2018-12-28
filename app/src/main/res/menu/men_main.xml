@@ -14,6 +14,10 @@
 
         android:title="استيراد "
         android:icon="@drawable/imprt_db"/>
+    <item android:id="@+id/taske_activity"
+
+        android:title="المهام "
+        android:icon="@drawable/imprt_db"/>
 
     <item android:id="@+id/about_app"
 
