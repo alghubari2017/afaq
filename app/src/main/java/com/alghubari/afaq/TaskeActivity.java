@@ -44,43 +44,50 @@ public class TaskeActivity extends AppCompatActivity {
 
 
     public void viewTaske() {
-        CustomerModle customerModle=new CustomerModle();
+        int isnotredy=0;
+        int isnotbeginwork=0;
+
         customerList=new ArrayList<CustomerModle>();
 
 
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
         int searchStr = 0;
+        String[] tablecolumns=new String[]{CustomereEntry.COLUMN_NAME_CUSTOMER
+
+                , CustomereEntry.COLUMN_PHONE_NUM
+                , CustomereEntry.COLUMN_DAY_OF_DATE
+                , CustomereEntry.COLUMN_PRICE
+                , CustomereEntry.COLUMN_PAYED_VALUE
+                , CustomereEntry.COLUMN_REMIND_VALUE
+                , CustomereEntry.COLUMN_RECIVE_DATE
+                ,CustomereEntry.COLUMN_ADRESS_COUNT
+                , CustomereEntry.COLUMN_ADRESS_LENGHT
+                , CustomereEntry.COLUMN_SHOULDER_LENGHT
+                , CustomereEntry.COLUMN_KUM_LENGHT
+                , CustomereEntry.COLUMN_CHEST_WEDIGHT
+                , CustomereEntry.COLUMN_NIKE_SIZE
+                , CustomereEntry.COLUMN_HAND_LENGHT
+                , CustomereEntry.COLUMN_CABACK_LENGHT
+                , CustomereEntry.COLUMN_FROM_DAWON
+                , CustomereEntry.COLUMN_GABSOR_TYPE
+                , CustomereEntry.COLUMN_GEEB_TYPE
+                , CustomereEntry.COLUMN_CABACK_TYPE
+                , CustomereEntry.COLUMN_NIKE_TYPE
+                , CustomereEntry.COLUMN_PAGE_NUM
+                ,CustomereEntry.COLUMN_IS_READY
+                ,CustomereEntry.COLUMN_IS_BEGIN_WORK};
+
+        String whereClause = CustomereEntry.COLUMN_IS_READY + " = ? AND " + CustomereEntry.COLUMN_IS_BEGIN_WORK  + " = ?";
+        String[] whereArgs = new String[] {
+                String.valueOf(isnotredy),
+                String.valueOf(isnotbeginwork)
+        };
+
 
         // Cursor c =  db.rawQuery("SELECT * FROM " + CustomereEntry.TABLE_NAME + " WHERE " +
         //  CustomereEntry.COLUMN_NAME_CUSTOMER + "=?", new String[]{searchStr});
-        Cursor cursor = db.query(CustomereEntry.TABLE_NAME,
+        Cursor cursor = db.query(CustomereEntry.TABLE_NAME,tablecolumns,whereClause,whereArgs,null,null,CustomereEntry.COLUMN_RECIVE_DATE,null);
 
-                new String[]{CustomereEntry.COLUMN_NAME_CUSTOMER
-
-                        , CustomereEntry.COLUMN_PHONE_NUM
-                        , CustomereEntry.COLUMN_DAY_OF_DATE
-                        , CustomereEntry.COLUMN_PRICE
-                        , CustomereEntry.COLUMN_PAYED_VALUE
-                        , CustomereEntry.COLUMN_REMIND_VALUE
-                        , CustomereEntry.COLUMN_RECIVE_DATE
-                        ,CustomereEntry.COLUMN_ADRESS_COUNT
-                        , CustomereEntry.COLUMN_ADRESS_LENGHT
-                        , CustomereEntry.COLUMN_SHOULDER_LENGHT
-                        , CustomereEntry.COLUMN_KUM_LENGHT
-                        , CustomereEntry.COLUMN_CHEST_WEDIGHT
-                        , CustomereEntry.COLUMN_NIKE_SIZE
-                        , CustomereEntry.COLUMN_HAND_LENGHT
-                        , CustomereEntry.COLUMN_CABACK_LENGHT
-                        , CustomereEntry.COLUMN_FROM_DAWON
-                        , CustomereEntry.COLUMN_GABSOR_TYPE
-                        , CustomereEntry.COLUMN_GEEB_TYPE
-                        , CustomereEntry.COLUMN_CABACK_TYPE
-                        , CustomereEntry.COLUMN_NIKE_TYPE
-                        , CustomereEntry.COLUMN_PAGE_NUM
-                        ,CustomereEntry.COLUMN_IS_READY
-                        ,CustomereEntry.COLUMN_IS_BEGIN_WORK},
-                null,
-                null, null, null, CustomereEntry.COLUMN_RECIVE_DATE, null);
 
 
 
@@ -90,6 +97,7 @@ public class TaskeActivity extends AppCompatActivity {
 
             if (cursor.moveToFirst()) {
                 do {
+                    CustomerModle customerModle=new CustomerModle();
 
                     // int idNumber = cursor.getInt(cursor.getColumnIndex("_ID"));
                     customerModle.setCustomerName(cursor.getString(cursor.getColumnIndex(StoreContract.CustomereEntry.COLUMN_NAME_CUSTOMER)));
