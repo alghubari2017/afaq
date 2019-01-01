@@ -1,6 +1,7 @@
 package com.alghubari.afaq;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -27,7 +29,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+
 import com.alghubari.afaq.SQdbHlper;
 import com.alghubari.afaq.StoreContract.CustomereEntry;
 
@@ -113,12 +119,26 @@ public class MainActivity extends AppCompatActivity {
               SQLiteDatabase db = mDbHelper.getWritableDatabase();
               name = cusName.getText().toString();
               phone = cusPhone.getText().toString();
+              int total=0;
+              int rem=0;
               pnum = ednumpage.getText().toString();
               count=adresscount.getText().toString();
+
+
+
               addlenght=adresslenght.getText().toString();
+
               vprice=addressprice.getText().toString();
+              total= Integer.parseInt(count) * Integer.parseInt(vprice);
+              addressprice.setText(String.valueOf(total));
+              //total=Integer.parseInt(count)*Integer.parseInt(vprice);
+             // addressprice.setText(total);
               vpay=valuePay.getText().toString();
-              vremind=valueRminde.getText().toString();
+              rem=total-Integer.parseInt(vpay);
+              //vpay=valuePay.getText().toString();
+             // valueRminde.setText(rem);
+             // vremind=valueRminde.getText().toString();
+          valueRminde.setText(String.valueOf(rem));
               dateadd=reciveDate.getText().toString();
               cum=cumLenght.getText().toString();
               nick=nicksize.getText().toString();
@@ -142,8 +162,8 @@ public class MainActivity extends AppCompatActivity {
               values.put(COLUMN_NAME_CUSTOMER, name);
               values.put(COLUMN_PHONE_NUM, phone);
               values.put(CustomereEntry.COLUMN_DAY_OF_DATE, "2014-4-2");
-              values.put(CustomereEntry.COLUMN_PRICE, vprice);
-              values.put(CustomereEntry.COLUMN_REMIND_VALUE, vremind);
+              values.put(CustomereEntry.COLUMN_PRICE, total);
+              values.put(CustomereEntry.COLUMN_REMIND_VALUE, rem);
               values.put(CustomereEntry.COLUMN_PAYED_VALUE, vpay);
               values.put(CustomereEntry.COLUMN_RECIVE_DATE, dateadd);
               values.put(CustomereEntry.COLUMN_ADRESS_COUNT, count);
@@ -320,7 +340,7 @@ public class MainActivity extends AppCompatActivity {
                             vremind =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_REMIND_VALUE));
 
 
-                            count =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_RECIVE_DATE));
+                            count =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_ADRESS_COUNT));
 
 
                             sholder =cursor.getInt(cursor.getColumnIndex(CustomereEntry.COLUMN_SHOULDER_LENGHT));
@@ -380,6 +400,12 @@ public class MainActivity extends AppCompatActivity {
                             }
                             else
                                 geobcheck.setChecked(false);
+                            gabasorCheck.setSelected(true);
+                            if(gabsoor==1) {
+                                gabasorCheck.setChecked(true);
+                            }
+                            else
+                                gabasorCheck.setChecked(false);
 
                             if(isready==1) {
                                 gahschec.setChecked(true);
@@ -409,6 +435,22 @@ btadd1.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
 cusName.setText("");
+        cusPhone.setText("");
+        addressprice.setText("");
+        valuePay.setText("");
+        valueRminde.setText("");
+        shoulderLenght.setText("");
+        adresscount.setText("");
+
+                adresslenght.setText("");
+                cumLenght.setText("");
+                chestLenght.setText("");
+                nicksize.setText("");
+                handsize.setText("");
+                fromdwon.setText("");
+                cabacklenght.setText("");
+                 reciveDate.setText("");
+                 ednumpage.setText("");
 
 
     }
@@ -682,6 +724,7 @@ cusName.setText("");
        */
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

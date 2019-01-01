@@ -64,8 +64,8 @@ public final class StoreContract {
          */
         public static final int WITH_GEEB = 1;
         public static final int WITH_OUT_GEEB = 0;
-        public static final int WITH_HASHOWH = 0;
-        public static final int WITH_OUT_HASHOWH = 1;
+        public static final int WITH_HASHOWH = 1;
+        public static final int WITH_OUT_HASHOWH =0;
         public static final int DABBLE = 2;
 
 

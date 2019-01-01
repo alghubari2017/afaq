@@ -3,6 +3,7 @@ package com.alghubari.afaq;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerAdapterCustomer extends RecyclerView.Adapter<RecyclerAdapterCustomer.customerAdapter> {
 
+
+public class RecyclerAdapterCustomer extends RecyclerView.Adapter<RecyclerAdapterCustomer.customerAdapter> {
+private  static final String TAG=RecyclerAdapterCustomer.class.getSimpleName().toString();
     private List<CustomerModle>customerModleList=new ArrayList<>();
     private Context context;
 
@@ -43,18 +46,85 @@ public class RecyclerAdapterCustomer extends RecyclerView.Adapter<RecyclerAdapte
         holder.addressLenght.setText(String.valueOf(customerModle.getAddressLenght()));
         holder.reciveDate.setText(customerModle.getRiciveDate());
         holder.cumLnght.setText(String.valueOf(customerModle.getAlkumLenght()));
-        holder.nikeType.setText(String.valueOf(customerModle.getTypeOfNike()));
-        holder.cbackType.setText(String.valueOf(customerModle.getTypeOfKaback()));
+        if(customerModle.getTypeOfNike()==0) {
+            holder.nikeType.setText(("سادة"));
+        }
+        else if(customerModle.getTypeOfNike()==1){
+            holder.nikeType.setText(("قلاب صيني"));
+
+        }
+        else if(customerModle.getTypeOfNike()==2){
+            holder.nikeType.setText(("سادة"));
+
+        }
+        else if(customerModle.getTypeOfNike()==3){
+            holder.nikeType.setText(("ص ق درجتين"));
+
+        }
+        else if(customerModle.getTypeOfNike()==4){
+            holder.nikeType.setText(("صيني3درج"));
+
+
+        }
+        else if(customerModle.getTypeOfNike()==5){
+            holder.nikeType.setText(("سادة قلاب"));
+
+        }
+        else if(customerModle.getTypeOfNike()==6){
+            holder.nikeType.setText(("قلاب مفتوح "));
+
+        }
+
+        else
+            holder.nikeType.setText(("قلاب ملكي"));
+
+        if(customerModle.getTypeOfKaback()==0) {
+            holder.cbackType.setText(("بدون حشوه"));
+        }
+        else if(customerModle.getTypeOfKaback()==1){
+            holder.cbackType.setText(("حشوه"));
+
+        }
+        else
+            holder.cbackType.setText(("دبل"));
+
+
+
+
         holder.chestLenght.setText(String.valueOf(customerModle.getChessWidth()));
         holder.shoulderLenght.setText(String.valueOf(customerModle.getShoulderLenght()));
         holder.nikeSize.setText(String.valueOf(customerModle.getHandLenght()));
         holder.cabackLenght.setText(String.valueOf(customerModle.getCabackLenght()));
         holder.fromDwon.setText(String.valueOf(customerModle.getFromDwonLenght()));
-        holder.geebType.setText(String.valueOf(customerModle.getGeebType()));
-        holder.gabsorType.setText(String.valueOf(customerModle.getGabsorType()));
+        if(customerModle.getGeebType()==0) {
+            holder.geebType.setText(("لايوجد"));
+        }
+        else
+            holder.geebType.setText(("يوجد"));
+
+        if(customerModle.getGabsorType()==0) {
+            holder.gabsorType.setText(("لايوجد"));
+        }
+        else
+            holder.gabsorType.setText(("يوجد"));
+
+
+
         holder.pageNumber.setText(String.valueOf(customerModle.getPageNumber()));
-        holder.isAddressReady.setText(String.valueOf(customerModle.getIsReady()));
-        holder.isBeginWork.setText(String.valueOf(customerModle.getIsBeginWork()));
+        if(customerModle.getIsReady()==1) {
+            holder.isAddressReady.setText(("نعم"));
+        }
+        else
+            holder.isAddressReady.setText(("لا"));
+
+
+        if(customerModle.getIsBeginWork()==1) {
+            holder.isBeginWork.setText(("نعم"));
+        }
+        else
+            holder.isBeginWork.setText(("لا"));
+
+
 
     }
 
@@ -64,11 +134,11 @@ public class RecyclerAdapterCustomer extends RecyclerView.Adapter<RecyclerAdapte
     }
 
 
-    public class customerAdapter extends RecyclerView.ViewHolder{
+    public class customerAdapter extends RecyclerView.ViewHolder  implements View.OnClickListener{
         TextView customerName,customerPhone,reciveDate,nikeType,cbackType,pageNumber,isAddressReady,isBeginWork,addressCount,
         addressLenght,cumLnght,chestLenght,nikeSize,cabackLenght,addressPrice,addressPay,adressRemind,shoulderLenght,handLenght,fromDwon,
         gabsorType,geebType;
-
+        private String mItem;
 
         public customerAdapter(View itemView) {
             super(itemView);
@@ -103,6 +173,12 @@ public class RecyclerAdapterCustomer extends RecyclerView.Adapter<RecyclerAdapte
 
 
 
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            Log.d(TAG, "onClick " + getPosition() + " " + mItem);
 
         }
     }

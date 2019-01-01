@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="16dp"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cv"
+        >
+
+
+
+        <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+
+
+
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textview_price_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="السعر"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/text_price"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_pay_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="المدفوع"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_pay"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_remind_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="المتبقي"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_remind"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_shoulder_lenght_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="طول الكتف"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_shoulder_lenght"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_hand_lenght_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="وسع اليد"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_hand_lenght"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_dwon_lenght_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="من تحت"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_dwon_lenght"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+
+                <TextView
+                    android:id="@+id/textview_gabsor_type_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="الجبزور"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_gabsor_type"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_geeb_type_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="الجيب"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_geeb_type"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="16dp">
+
+                <TextView
+                    android:id="@+id/textview_cus_name"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="اسم العميل"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_name"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_phone_num_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="الهاتف"
+                    android:textAppearance="@style/TextAppearance.Design.Tab"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_phone_num"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_date_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="تاريخ الاستلام"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_datee"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_nike_type_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="نوع الرقبه"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_nike_type"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_caback_type_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="نوع الكبك"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_caback_type"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_page_num_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="رقم الصفحه"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_page_num"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+
+                <TextView
+                    android:id="@+id/textview_ready_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="هل جاهز"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_ready"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="102dp"
+                android:layout_height="match_parent"
+
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp">
+
+                <TextView
+                    android:id="@+id/textview_count_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="العدد"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_count"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_address_lenght_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="الطول"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_address_lenght"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_cum_lenght_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="الكم"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_cum_lenght"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_chest_lenght_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="الصدر"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_chest_lenght"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_nik_lenght_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="الرقبه"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_nik_lenght"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_caback_lenght_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="الكبك"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/textview_caback_lenght"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp" />
+
+
+                <TextView
+                    android:id="@+id/textview_begin_work_hint"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp"
+                    android:text="beginwork" />
+
+                <TextView
+                    android:id="@+id/textview_begin_work"
+                    android:layout_width="145dp"
+                    android:layout_height="25dp" />
+            </LinearLayout>
+
+
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
